@@ -1,8 +1,7 @@
 "use client"
 
-import { FaTimes } from "react-icons/fa"
 import { EscrowInfoStyled, Data } from "../../components/styles/EscrowInfo.styled"
-import { useContractReads, useContractRead, useContractWrite, useWaitForTransaction, usePrepareContractWrite } from "wagmi"
+import { useContractReads, useContractRead } from "wagmi"
 import { ERC20_ABI } from "@/utils/constants/ERC20_ABI"
 import { ERC20_ESCROW_ABI } from "@/utils/constants/ERC20_ESCROW_ABI"
 import { useAccount } from "wagmi"
@@ -11,16 +10,16 @@ import { Section, Panel, ReturnButton } from "@/app/components/styles/Section.st
 import { BsArrowReturnLeft } from "react-icons/bs"
 import { BiHomeAlt2 } from "react-icons/bi"
 import { ethers, BigNumberish } from "ethers"
-import { useState, BaseSyntheticEvent, useEffect } from "react"
-import { Container } from "@/app/components/styles/Modal.styled"
-import { useForm, SubmitHandler } from "react-hook-form"
-import toast, { Toaster } from "react-hot-toast"
+import { useState } from "react"
+import { notifyWait, notifySuccess } from "@/utils/notifications"
+import { Toaster } from "react-hot-toast"
 import ModalBackdrop from "@/app/components/ModalBackdrop"
 import ButtonContainer from "@/app/components/ButtonContainer"
 import CountdownTimer from "@/app/components/CountdownTimer"
 import Image from "next/image"
 import background from "../../../../public/bg.svg"
 import Link from "next/link"
+import Modal from "@/app/components/Modal"
 
 interface Params {
     params: {
@@ -28,99 +27,11 @@ interface Params {
     }
 }
 
-interface ModalParams {
-    params: {
-        address: `0x${string}`,
-        handleClick: () => void
-    }
-}
-
-interface IFormInput {
-    refundFromForm: string
-}
-
 enum State {
     CREATED,
     CONFIRMED,
     DISPUTED,
     RESOLVED,
-}
-
-const notifyWait = (message: string) =>
-    toast.loading(message, { position: "top-right", duration: 5000 })
-const notifySuccess = (message: string) =>
-    toast.success(message, { position: "top-right", duration: 5000 })
-
-const Modal = ({params: { address, handleClick } }: ModalParams) => {
-    const { register, handleSubmit } = useForm<IFormInput>()
-    const [refund, setRefund] = useState<string>("")
-
-    const onSubmit: SubmitHandler<IFormInput> = (
-        { refundFromForm },
-        event: BaseSyntheticEvent<object, any, any> | undefined,
-    ) => {
-        event?.preventDefault()
-        setRefund(refundFromForm)
-    }
-
-    const { config } = usePrepareContractWrite({
-        address,
-        abi: ERC20_ESCROW_ABI,
-        functionName: "resolveDispute",
-        args: [BigInt(refund)]
-    })
-
-    const { data, writeAsync } = useContractWrite({
-        ...config,
-        onSuccess() {
-            notifyWait("Processing transaction")
-        }
-    })
-
-    useEffect(() => {
-        const handleAsyncOperation = async() => {
-            try {
-                await writeAsync?.()
-            } catch (error) {
-                console.error(error)
-            }
-        }
-
-        if(refund) {
-            handleAsyncOperation()
-        }
-    }, [refund])
-
-    useWaitForTransaction({
-        hash: data?.hash,
-        confirmations: 1,
-        onSuccess() {
-            notifySuccess("Dispute resolved")
-            handleClick()
-        }
-    })
-
-    return (
-        <Container>
-            <div>
-                <FaTimes onClick={handleClick} />
-            </div>
-            <p>
-                Insert amount to refund to the buyer, the remaining will go to the seller.
-            </p>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label>* Amount</label>
-                <input
-                    type="text"
-                    {...register("refundFromForm", {
-                        required: true,
-                        maxLength: 3,
-                    })}
-                />
-                <input type="submit" value="Resolve Dispute" />
-            </form>
-        </Container>
-    )
 }
 
 const Loading = () => {
