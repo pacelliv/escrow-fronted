@@ -1,0 +1,51 @@
+{
+    "name": "escrow-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prettier-check": "prettier --check **/**/*{.json,ts} src/**/*.{tsx,ts}",
+        "prettier-fix": "prettier --write **/**/*.{json,ts} src/**/*.{tsx,ts}"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.8.0-rc.2",
+        "@apollo/experimental-nextjs-app-support": "^0.4.3",
+        "@types/luxon": "^3.3.2",
+        "@types/react": "18.2.22",
+        "@types/react-dom": "18.2.7",
+        "@web3modal/ethereum": "^2.7.1",
+        "@web3modal/react": "^2.7.1",
+        "axios": "^1.5.1",
+        "blo": "^1.1.0",
+        "dotenv": "^16.3.1",
+        "eslint": "8.49.0",
+        "eslint-config-next": "13.5.2",
+        "ethers": "^6.7.1",
+        "graphql": "^16.8.1",
+        "luxon": "^3.4.3",
+        "next": "^13.4.17",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-hook-form": "^7.46.2",
+        "react-hot-toast": "^2.4.1",
+        "react-icons": "^4.11.0",
+        "react-loader-spinner": "^5.4.5",
+        "styled-components": "^6.0.8",
+        "typescript": "5.2.2",
+        "viem": "^1.10.14",
+        "wagmi": "^1.4.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.8.2",
+        "prettier": "^3.0.3"
+    },
+    "resolutions": {
+        "styled-components": "^5"
+    },
+    "engines": {
+        "node": ">=16.8.0"
+    }
+}

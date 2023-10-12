@@ -1,0 +1,63 @@
+{
+    "data": {
+        "newERC20Escrows": [
+            {
+                "id": "0xabb965a8a38f2b5f92dc6d59e5f0e010d923714da9be49e4ebdaa0fc4fba36a227000000",
+                "escrow": "0x8b640381f51621027610ab355f1acbee3ae1c4d6",
+                "grantor": "0xcc8188e984b4c392091043caa73d227ef5e0d0a7",
+                "grantee": "0xa4d65b468642ba258238a2d5175e8d9807eebc84",
+                "arbiter": "0xfdab5054fc2a8534705517a1c26c550540a49b4a",
+                "token": "0x8fd0d8058303c5c29bd9789f4961b43bce9543e6",
+                "arbiterFee": "10",
+                "payment": "1000000000000000",
+                "duration": "3600",
+                "blockNumber": "4376390",
+                "blockTimestamp": "1695837900",
+                "transactionHash": "0xabb965a8a38f2b5f92dc6d59e5f0e010d923714da9be49e4ebdaa0fc4fba36a2"
+            },
+            {
+                "id": "0xe243f25ac61baf9400d8876d457eef674db457486836b3c55d41a1221afb908a29000000",
+                "escrow": "0x31c36b8d11fceb9340009aa7fc6a80f205983499",
+                "grantor": "0xcc8188e984b4c392091043caa73d227ef5e0d0a7",
+                "grantee": "0xa4d65b468642ba258238a2d5175e8d9807eebc84",
+                "arbiter": "0xfdab5054fc2a8534705517a1c26c550540a49b4a",
+                "token": "0x8fd0d8058303c5c29bd9789f4961b43bce9543e6",
+                "arbiterFee": "10",
+                "payment": "1000000000000000",
+                "duration": "3600",
+                "blockNumber": "4376399",
+                "blockTimestamp": "1695838008",
+                "transactionHash": "0xe243f25ac61baf9400d8876d457eef674db457486836b3c55d41a1221afb908a"
+            },
+            {
+                "id": "0xf3876cc73749066a086d11d9df91b13924c7b2cc16a744c19f0f9e9e00828d777f000000",
+                "escrow": "0x7c2479944f942d7fa7fadeeef6586c6788ee9701",
+                "grantor": "0xcc8188e984b4c392091043caa73d227ef5e0d0a7",
+                "grantee": "0xa4d65b468642ba258238a2d5175e8d9807eebc84",
+                "arbiter": "0xfdab5054fc2a8534705517a1c26c550540a49b4a",
+                "token": "0x8fd0d8058303c5c29bd9789f4961b43bce9543e6",
+                "arbiterFee": "10",
+                "payment": "1000000000000000",
+                "duration": "3600",
+                "blockNumber": "4376317",
+                "blockTimestamp": "1695836988",
+                "transactionHash": "0xf3876cc73749066a086d11d9df91b13924c7b2cc16a744c19f0f9e9e00828d77"
+            },
+            {
+                "id": "0xf9849f72f8d7963bcbcf2dcfb4c864f96882ecb080733fcc606ba38d8909f6b793000000",
+                "escrow": "0xbcd0d7eaae7ad374d17a2045c66b29f06aceb620",
+                "grantor": "0xcc8188e984b4c392091043caa73d227ef5e0d0a7",
+                "grantee": "0xa4d65b468642ba258238a2d5175e8d9807eebc84",
+                "arbiter": "0xfdab5054fc2a8534705517a1c26c550540a49b4a",
+                "token": "0x8fd0d8058303c5c29bd9789f4961b43bce9543e6",
+                "arbiterFee": "10",
+                "payment": "1000000000000000",
+                "duration": "3600",
+                "blockNumber": "4376395",
+                "blockTimestamp": "1695837960",
+                "transactionHash": "0xf9849f72f8d7963bcbcf2dcfb4c864f96882ecb080733fcc606ba38d8909f6b7"
+            }
+        ],
+        "newNativeEscrows": []
+    }
+}
