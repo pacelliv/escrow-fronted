@@ -1,3 +1,9 @@
+type Address = {
+    params: {
+        address: `0x${string}`
+    }
+}
+
 type RequestBody = {
     apikey: string | undefined
     contractaddress: string

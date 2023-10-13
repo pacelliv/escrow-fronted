@@ -10,9 +10,8 @@ import {
     BottomCard,
 } from "./styles/EscrowsContainer"
 import { getDate } from "@/utils/time"
-import { useContractRead } from "wagmi"
-import { ERC20_ABI } from "@/utils/constants/ERC20_ABI"
-import { ERC20_ESCROW_ABI } from "@/utils/constants/ERC20_ESCROW_ABI"
+import { GetEscrowState } from "@/lib/GetEscrowState"
+import { GetTokenSymbol } from "@/lib/GetTokenSymbol"
 import ethereumLogo from "../../../public/ethereum-eth-logo.svg"
 import Image from "next/image"
 import Link from "next/link"
@@ -21,47 +20,6 @@ type Params = {
     params: {
         data: EscrowData
     }
-}
-
-type Address = {
-    params: {
-        address: `0x${string}`
-    }
-}
-
-enum State {
-    CREATED,
-    CONFIRMED,
-    DISPUTED,
-    RESOLVED,
-}
-
-const TokenSymbol = ({ params: { address } }: Address): string => {
-    const { data } = useContractRead({
-        abi: ERC20_ABI,
-        address: address,
-        functionName: "symbol",
-    })
-
-    return data as string
-}
-
-const EscrowState = ({ params: { address } }: Address): string => {
-    const { data } = useContractRead({
-        abi: ERC20_ESCROW_ABI,
-        address: address,
-        functionName: "getState",
-    })
-
-    return data === State.CREATED
-        ? "Live"
-        : data === State.CONFIRMED
-        ? "Confirmed"
-        : data === State.DISPUTED
-        ? "Disputed"
-        : data === State.RESOLVED
-        ? "Resolved"
-        : ""
 }
 
 const Escrows = ({ params: { data } }: Params) => {
@@ -73,7 +31,7 @@ const Escrows = ({ params: { data } }: Params) => {
                         <TopCard>
                             <div>
                                 <p>
-                                    <EscrowState
+                                    <GetEscrowState
                                         params={{ address: event.escrow as `0x${string}` }}
                                     />
                                 </p>
@@ -98,7 +56,7 @@ const Escrows = ({ params: { data } }: Params) => {
                         <MiddleCard>
                             <p>
                                 Payment: {ethers.formatUnits(event.payment, "ether")}{" "}
-                                <TokenSymbol params={{ address: event.token as `0x${string}` }} />
+                                <GetTokenSymbol params={{ address: event.token as `0x${string}` }} />
                             </p>
                             <p>Arbiter fee: {event.arbiterFee}%</p>
                             <p>Creation date: {getDate(event.blockTimestamp).slice(0, 11)}</p>
@@ -125,7 +83,7 @@ const Escrows = ({ params: { data } }: Params) => {
                         <TopCard>
                             <div>
                                 <p>
-                                    <EscrowState
+                                    <GetEscrowState
                                         params={{ address: event.escrow as `0x${string}` }}
                                     />
                                 </p>
@@ -150,7 +108,7 @@ const Escrows = ({ params: { data } }: Params) => {
                         <MiddleCard>
                             <p>
                                 Payment: {ethers.formatUnits(event.payment, "ether")}{" "}
-                                <TokenSymbol params={{ address: event.token as `0x${string}` }} />
+                                <GetTokenSymbol params={{ address: event.token as `0x${string}` }} />
                             </p>
                             <p>Arbiter fee: {event.arbiterFee} %</p>
                             <p>Creation date: {getDate(event.blockTimestamp).slice(0, 11)}</p>
