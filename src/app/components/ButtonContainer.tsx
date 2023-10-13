@@ -26,7 +26,6 @@ const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleC
     const [functionName, setFunctionName] = useState<
         "confirmReceipt" | "resolveDispute" | "startDispute" | "withdraw" | undefined
     >(undefined)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [message, setMessage] = useState<string>("")
 
     const erc20EscrowContract = {
@@ -74,10 +73,10 @@ const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleC
             }
         }
 
-        if (isLoading && functionName && message) {
+        if (functionName && message) {
             handleAsyncOperation()
         }
-    }, [args, functionName, message, isLoading])
+    }, [args, functionName, message])
 
     useWaitForTransaction({
         hash: txResponse?.hash,
@@ -96,7 +95,6 @@ const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleC
                             setFunctionName("confirmReceipt")
                             setArgs(undefined)
                             setMessage("Receipt confirmed")
-                            setIsLoading(true)
                         }}
                     >
                         Confirm Receipt
@@ -106,7 +104,6 @@ const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleC
                             setFunctionName("startDispute")
                             setArgs(undefined)
                             setMessage("Dispute started")
-                            setIsLoading(true)
                         }}
                     >
                         Start Dispute
@@ -116,7 +113,6 @@ const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleC
                             setFunctionName("withdraw")
                             setArgs(undefined)
                             setMessage("Funds withdrawn")
-                            setIsLoading(true)
                         }}
                     >
                         Withdraw Funds
@@ -130,7 +126,6 @@ const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleC
                             setFunctionName("startDispute")
                             setArgs(undefined)
                             setMessage("Dispute started")
-                            setIsLoading(true)
                         }}
                     >
                         Start Dispute
