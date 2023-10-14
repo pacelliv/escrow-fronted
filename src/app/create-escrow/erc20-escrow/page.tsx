@@ -83,13 +83,12 @@ const CreateERC20Escrow = (props: any) => {
 
     const { data: dataFactory, writeAsync: writeFactory } = useContractWrite({
         ...configFactory,
-        onSuccess(tokenData) {
-            setTxHash(tokenData.hash)
+        onSuccess(data) {
+            setTxHash(data.hash)
             setIsOpen(true)
         },
     })
 
-    // Something is not properly formatted
     const unwatch = useContractEvent({
         address: factoryAddress,
         abi: ESCROW_FACTORY_ABI,
@@ -171,12 +170,17 @@ const CreateERC20Escrow = (props: any) => {
     useWaitForTransaction({
         hash: dataToken?.hash,
         confirmations: 1,
-        onSuccess(data) {
-            setTimeout(async () => {
-                if (data.transactionHash) {
-                    await writeFactory?.()
-                }
-            }, 5000)
+        onSuccess() {
+            const delay = (ms: number) => {
+                return new Promise(resolve => setTimeout(resolve, ms))
+            }
+
+            const createEscrow = async() => {
+                await delay(5000)
+                await writeFactory?.()
+            }
+
+            createEscrow().catch(e => console.error(e))
         },
     })
 
