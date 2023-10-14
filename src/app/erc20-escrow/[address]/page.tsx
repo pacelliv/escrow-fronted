@@ -119,7 +119,7 @@ const Escrow = ({ params: { address } }: Params) => {
     return (
         <Wrapper>
             {isOpen && <ModalBackdrop />}
-            {isOpen && <Modal params={{ address, handleClick }}/>}
+            {isOpen && <Modal params={{ address, handleClick }} />}
             <Toaster />
             <Image
                 alt="background image"
@@ -206,7 +206,9 @@ const Escrow = ({ params: { address } }: Params) => {
                                 </Link>
                             </ReturnButton>
                             <CountdownTimer params={{ state: data?.[7]?.result }} />
-                            <ButtonContainer params={{ address, notifySuccess, notifyWait, handleClick }} />
+                            <ButtonContainer
+                                params={{ address, notifySuccess, notifyWait, handleClick }}
+                            />
                         </Panel>
                     </Section>
                 </>

@@ -172,15 +172,15 @@ const CreateERC20Escrow = (props: any) => {
         confirmations: 1,
         onSuccess() {
             const delay = (ms: number) => {
-                return new Promise(resolve => setTimeout(resolve, ms))
+                return new Promise((resolve) => setTimeout(resolve, ms))
             }
 
-            const createEscrow = async() => {
+            const createEscrow = async () => {
                 await delay(5000)
                 await writeFactory?.()
             }
 
-            createEscrow().catch(e => console.error(e))
+            createEscrow().catch((e) => console.error(e))
         },
     })
 

@@ -10,7 +10,7 @@ import { notifyWait, notifySuccess } from "@/utils/notifications"
 
 interface ModalParams {
     params: {
-        address: `0x${string}`,
+        address: `0x${string}`
         handleClick: () => void
     }
 }
@@ -19,7 +19,7 @@ interface IFormInput {
     refundFromForm: string
 }
 
-const Modal = ({params: { address, handleClick } }: ModalParams) => {
+const Modal = ({ params: { address, handleClick } }: ModalParams) => {
     const { register, handleSubmit } = useForm<IFormInput>()
     const [refund, setRefund] = useState<string>("")
 
@@ -35,18 +35,18 @@ const Modal = ({params: { address, handleClick } }: ModalParams) => {
         address,
         abi: ERC20_ESCROW_ABI,
         functionName: "resolveDispute",
-        args: [BigInt(refund)]
+        args: [BigInt(refund)],
     })
 
     const { data, writeAsync } = useContractWrite({
         ...config,
         onSuccess() {
             notifyWait("Processing transaction")
-        }
+        },
     })
 
     useEffect(() => {
-        const handleAsyncOperation = async() => {
+        const handleAsyncOperation = async () => {
             try {
                 await writeAsync?.()
             } catch (error) {
@@ -54,7 +54,7 @@ const Modal = ({params: { address, handleClick } }: ModalParams) => {
             }
         }
 
-        if(refund) {
+        if (refund) {
             handleAsyncOperation()
         }
     }, [refund])
@@ -65,7 +65,7 @@ const Modal = ({params: { address, handleClick } }: ModalParams) => {
         onSuccess() {
             notifySuccess("Dispute resolved")
             handleClick()
-        }
+        },
     })
 
     return (
@@ -73,9 +73,7 @@ const Modal = ({params: { address, handleClick } }: ModalParams) => {
             <div>
                 <FaTimes onClick={handleClick} />
             </div>
-            <p>
-                Insert amount to refund to the buyer, the remaining will go to the seller.
-            </p>
+            <p>Insert amount to refund to the buyer, the remaining will go to the seller.</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>* Amount</label>
                 <input

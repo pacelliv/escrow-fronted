@@ -20,7 +20,9 @@ type Params = {
     }
 }
 
-const ButtonContainer = ({ params: { address, notifySuccess, notifyWait, handleClick }}: Params) => {
+const ButtonContainer = ({
+    params: { address, notifySuccess, notifyWait, handleClick },
+}: Params) => {
     const { address: account } = useAccount()
     const [args, setArgs] = useState<readonly [bigint] | undefined>(undefined)
     const [functionName, setFunctionName] = useState<

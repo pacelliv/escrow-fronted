@@ -56,7 +56,9 @@ const Escrows = ({ params: { data } }: Params) => {
                         <MiddleCard>
                             <p>
                                 Payment: {ethers.formatUnits(event.payment, "ether")}{" "}
-                                <GetTokenSymbol params={{ address: event.token as `0x${string}` }} />
+                                <GetTokenSymbol
+                                    params={{ address: event.token as `0x${string}` }}
+                                />
                             </p>
                             <p>Arbiter fee: {event.arbiterFee}%</p>
                             <p>Creation date: {getDate(event.blockTimestamp).slice(0, 11)}</p>
@@ -108,7 +110,9 @@ const Escrows = ({ params: { data } }: Params) => {
                         <MiddleCard>
                             <p>
                                 Payment: {ethers.formatUnits(event.payment, "ether")}{" "}
-                                <GetTokenSymbol params={{ address: event.token as `0x${string}` }} />
+                                <GetTokenSymbol
+                                    params={{ address: event.token as `0x${string}` }}
+                                />
                             </p>
                             <p>Arbiter fee: {event.arbiterFee} %</p>
                             <p>Creation date: {getDate(event.blockTimestamp).slice(0, 11)}</p>

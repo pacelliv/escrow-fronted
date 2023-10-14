@@ -4,6 +4,7 @@ import { ImCheckmark } from "react-icons/im"
 import { FaTimes } from "react-icons/fa"
 import { ModalContainer } from "@/app/components/styles/TransactionModal.styled"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 type Params = {
     params: {
@@ -94,9 +95,15 @@ const TransactionModal = ({
                     </div>
                 </div>
                 {showButton && (
-                    <button onClick={handleClick} disabled={!isConfirmed} className="add-token">
+                    <Link
+                        href={`/erc20-escrow/${newEscrow}?timestamp=${timestamp}&duration=${duration?.toString(
+                            10,
+                        )}`}
+                        onClick={handleClick}
+                        className="add-token"
+                    >
                         See escrow
-                    </button>
+                    </Link>
                 )}
             </div>
         </ModalContainer>
