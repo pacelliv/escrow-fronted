@@ -3,7 +3,6 @@
 import { ImCheckmark } from "react-icons/im"
 import { FaTimes } from "react-icons/fa"
 import { ModalContainer } from "@/app/components/styles/TransactionModal.styled"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 type Params = {
@@ -27,7 +26,6 @@ const TransactionModal = ({
         isConfirmed,
         closeModal,
         chainId,
-        type,
         newEscrow,
         confirmationMessage,
         showButton,
@@ -35,20 +33,6 @@ const TransactionModal = ({
         duration,
     },
 }: Params) => {
-    const router = useRouter()
-
-    const handleClick = () => {
-        if (!showButton) return
-        if (type === "erc20-escrow") {
-            router.push(
-                `/erc20-escrow/${newEscrow}?timestamp=${timestamp}&duration=${duration?.toString(
-                    10,
-                )}`,
-            )
-            return
-        }
-        // router.push(`/native-escrow/${newEscrow}`)
-    }
 
     return (
         <ModalContainer>
@@ -99,7 +83,6 @@ const TransactionModal = ({
                         href={`/erc20-escrow/${newEscrow}?timestamp=${timestamp}&duration=${duration?.toString(
                             10,
                         )}`}
-                        onClick={handleClick}
                         className="add-token"
                     >
                         See escrow
