@@ -143,6 +143,7 @@ export const ModalContainer = styled.div`
 
     .add-token {
         display: block;
+        width: max-content;
         margin: 0 auto;
         padding: 0.6em 1.2em;
         border: 1px solid #516391;
