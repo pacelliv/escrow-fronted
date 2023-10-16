@@ -1,11 +1,11 @@
 import Image from "next/image"
-import cryptoWallet from "../../../public/bg.svg"
+import backgroundImage from "../../../public/bg.svg"
 
 const HeroBackground = () => {
     return (
         <Image
             alt="crypto wallet"
-            src={cryptoWallet}
+            src={backgroundImage}
             quality={100}
             style={{
                 width: "100%",
