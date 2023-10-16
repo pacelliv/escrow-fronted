@@ -126,7 +126,7 @@ const Escrow = ({ params: { address } }: Params) => {
                 src={background}
                 quality={100}
                 fill
-                priority
+                priority={true}
                 style={{
                     objectFit: "cover",
                     zIndex: -1,
