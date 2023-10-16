@@ -12,6 +12,7 @@ const HeroBackground = () => {
                 height: "100%",
                 borderRadius: "4px",
             }}
+            priority={true}
         />
     )
 }
