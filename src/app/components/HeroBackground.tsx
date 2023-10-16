@@ -4,7 +4,7 @@ import backgroundImage from "../../../public/bg.svg"
 const HeroBackground = () => {
     return (
         <Image
-            alt="crypto wallet"
+            alt="background image"
             src={backgroundImage}
             quality={100}
             style={{
