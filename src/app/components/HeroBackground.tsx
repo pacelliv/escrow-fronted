@@ -6,7 +6,6 @@ const HeroBackground = () => {
         <Image
             alt="background image"
             src={backgroundImage}
-            quality={100}
             style={{
                 width: "100%",
                 height: "100%",
