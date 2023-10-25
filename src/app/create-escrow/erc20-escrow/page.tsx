@@ -171,11 +171,11 @@ const CreateERC20Escrow = (props: any) => {
         hash: dataToken?.hash,
         confirmations: 1,
         onSuccess() {
-            const delay = (ms: number) => {
+            async function delay(ms: number): Promise<unknown> {
                 return new Promise((resolve) => setTimeout(resolve, ms))
             }
 
-            const createEscrow = async () => {
+            async function createEscrow(): Promise<void> {
                 await delay(5000)
                 await writeFactory?.()
             }
