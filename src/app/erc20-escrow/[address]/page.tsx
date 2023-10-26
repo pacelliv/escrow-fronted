@@ -210,7 +210,7 @@ const Escrow = ({ params: { address } }: Params) => {
                                     <BiHomeAlt2 />
                                 </Link>
                             </ReturnButton>
-                            <CountdownTimer params={{ state: data?.[7]?.result }} />
+                            {/* <CountdownTimer params={{ state: data?.[7]?.result }} /> */}
                             <ButtonContainer
                                 params={{ address, notifySuccess, notifyWait, handleClick }}
                             />
