@@ -33,7 +33,6 @@ const TransactionModal = ({
         duration,
     },
 }: Params) => {
-
     return (
         <ModalContainer>
             <FaTimes onClick={closeModal} className="close-modal" />
