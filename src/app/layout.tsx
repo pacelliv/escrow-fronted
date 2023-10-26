@@ -15,16 +15,16 @@ export const metadata: Metadata = {
 }
 
 const RootLayout = (props: any) => {
-    const erc20EscrowSourceCode = fs.readFileSync(
-        "./src/utils/flattened/ERC20EscrowFlattened.sol",
-        { encoding: "utf8" },
-    )
-    const nativeEscrowSourceCode = fs.readFileSync(
-        "./src/utils/flattened/NativeEscrowFlattened.sol",
-        { encoding: "utf8" },
-    )
-    props.params.erc20EscrowSourceCode = erc20EscrowSourceCode
-    props.params.nativeEscrowSourceCode = nativeEscrowSourceCode
+    // const erc20EscrowSourceCode = fs.readFileSync(
+    //     "./src/utils/flattened/ERC20EscrowFlattened.sol",
+    //     { encoding: "utf8" },
+    // )
+    // const nativeEscrowSourceCode = fs.readFileSync(
+    //     "./src/utils/flattened/NativeEscrowFlattened.sol",
+    //     { encoding: "utf8" },
+    // )
+    // props.params.erc20EscrowSourceCode = erc20EscrowSourceCode
+    // props.params.nativeEscrowSourceCode = nativeEscrowSourceCode
 
     return (
         <ThemeWrapper>

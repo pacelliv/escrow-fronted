@@ -28,7 +28,7 @@ interface IFormInput {
 }
 
 const CreateERC20Escrow = (props: any) => {
-    const erc20EscrowFlattened = props.params.erc20EscrowSourceCode
+    // const erc20EscrowFlattened = props.params.erc20EscrowSourceCode
     const { chain } = useNetwork()
     const chainId = chain?.id
     const { register, handleSubmit } = useForm<IFormInput>()
@@ -109,12 +109,12 @@ const CreateERC20Escrow = (props: any) => {
                     log[0].args.payment,
                 ],
             )
-            await verifyContract(
-                log[0].args.escrow as string,
-                encodedConstructorArgs.slice(2),
-                "ERC20Escrow",
-                erc20EscrowFlattened,
-            )
+            // await verifyContract(
+            //     log[0].args.escrow as string,
+            //     encodedConstructorArgs.slice(2),
+            //     "ERC20Escrow",
+            //     erc20EscrowFlattened,
+            // )
         },
     })
 
