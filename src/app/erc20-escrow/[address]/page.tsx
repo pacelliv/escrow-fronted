@@ -41,7 +41,6 @@ const Loading = () => {
 const Escrow = ({ params: { address } }: Params) => {
     const { address: account } = useAccount()
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const [content, setContent] = useState<boolean>(false)
     const handleClick = () => setIsOpen(!isOpen)
 
     const erc20EscrowContract = {
@@ -117,10 +116,6 @@ const Escrow = ({ params: { address } }: Params) => {
         return (payment * arbiterFee) / 100
     }
 
-    useEffect(() => {
-        setContent(true)
-    }, [isLoading])
-
     return (
         <Wrapper>
             {isOpen && <ModalBackdrop />}
@@ -138,7 +133,7 @@ const Escrow = ({ params: { address } }: Params) => {
                     opacity: 0.4,
                 }}
             />
-            {!content ? (
+            {isLoading ? (
                 <Loading />
             ) : (
                 <>
