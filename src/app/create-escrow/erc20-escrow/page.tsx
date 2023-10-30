@@ -14,6 +14,7 @@ import {
 } from "wagmi"
 import { ESCROW_FACTORY_ADDRESSES as escrows } from "@/utils/constants/ESCROW_FACTORY_ADDRESSES"
 import { parseEther, AbiCoder, ethers } from "ethers"
+import { Escrow } from "@/utils/enums"
 import { verifyContract } from "@/lib/verify_contract"
 import ModalBackdrop from "@/app/components/ModalBackdrop"
 import TransactionModal from "@/app/components/TransactionModal"
@@ -27,8 +28,7 @@ interface IFormInput {
     formDuration: string
 }
 
-const CreateERC20Escrow = (props: any) => {
-    // const erc20EscrowFlattened = props.params.erc20EscrowSourceCode
+const CreateERC20Escrow = () => {
     const { chain } = useNetwork()
     const chainId = chain?.id
     const { register, handleSubmit } = useForm<IFormInput>()
@@ -109,12 +109,12 @@ const CreateERC20Escrow = (props: any) => {
                     log[0].args.payment,
                 ],
             )
-            // await verifyContract(
-            //     log[0].args.escrow as string,
-            //     encodedConstructorArgs.slice(2),
-            //     "ERC20Escrow",
-            //     erc20EscrowFlattened,
-            // )
+            await verifyContract(
+                log[0].args.escrow as string,
+                encodedConstructorArgs.slice(2),
+                "ERC20Escrow",
+                Escrow.ERC20,
+            )
         },
     })
 
