@@ -1,4 +1,3 @@
-import fs from "fs"
 import ThemeWrapper from "./ThemeWrapper"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
@@ -14,25 +13,14 @@ export const metadata: Metadata = {
     description: "Transact with trust and safety",
 }
 
-const RootLayout = (props: any) => {
-    // const erc20EscrowSourceCode = fs.readFileSync(
-    //     "./src/utils/flattened/ERC20EscrowFlattened.sol",
-    //     { encoding: "utf8" },
-    // )
-    // const nativeEscrowSourceCode = fs.readFileSync(
-    //     "./src/utils/flattened/NativeEscrowFlattened.sol",
-    //     { encoding: "utf8" },
-    // )
-    // props.params.erc20EscrowSourceCode = erc20EscrowSourceCode
-    // props.params.nativeEscrowSourceCode = nativeEscrowSourceCode
-
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <ThemeWrapper>
             <html lang="en">
                 <body className={roboto.className}>
                     <Providers>
                         <Navbar />
-                        {props.children}
+                        {children}
                         <StyledDivider style={{ width: "90%", marginBottom: "0" }} />
                         <Footer />
                     </Providers>
