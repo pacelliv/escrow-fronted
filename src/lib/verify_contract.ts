@@ -1,13 +1,16 @@
 import axios from "axios"
+import fs from "fs"
+import { Escrow } from "@/utils/enums"
 
 export const verifyContract = async (
     contractaddress: string,
     constructorArgs: string,
     contractname: string,
-    sourceCode: string,
+    escrowType: string
 ) => {
     const apiUrl = process.env.API_URL || ""
     const apikey = process.env.ETHERSCAN_API_KEY || ""
+    const sourceCode = fs.readFileSync(escrowType === Escrow.ERC20 ? "./src/utils/flattened/ERC20EscrowFlattened.sol" : "", { encoding: "utf-8" })
 
     try {
         const requestBody: RequestBody = {
